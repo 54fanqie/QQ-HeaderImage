@@ -38,9 +38,10 @@
         
         //更改成用自己项目的获取头像的方法
         UIImage * image =[UIImage imageNamed:_userIDs[i]];
+        
+        
         [imagesMu addObject:image];
         dispatch_group_leave(group);
-        
         
     }
     

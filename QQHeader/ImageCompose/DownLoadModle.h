@@ -17,6 +17,8 @@
  *  在合成图片后 给headImage赋值这样不用每次去合成
  */
 @property (nonatomic,strong) NSMutableArray *userIDs;
+
 @property (nonatomic,strong) UIImage * headImage;
+
 -(void)downLoadImagesfrom:(void (^)(UIImage * image))block;
 @end
