@@ -13,75 +13,75 @@ static inline float radians(double degrees) { return degrees * M_PI / 180; }
 
 @implementation JJHeaders
 
-+ (UIView *)createHeaderView:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH
++ (UIImageView *)createHeaderView:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH
 {
     if (!images || [images count] <= 0) {
         return nil;
     }
     
-    UIView *view = nil;
+    UIImageView *imageView = nil;
     switch ([images count]) {
         case 1: {
-            view = [JJHeaders getView1:headerWH images:images imageWH:imageWH];
+            imageView = [JJHeaders getView1:headerWH images:images imageWH:imageWH];
             break;
         }
         case 2: {
-            view = [JJHeaders getView2:headerWH images:images imageWH:imageWH];
+            imageView = [JJHeaders getView2:headerWH images:images imageWH:imageWH];
             break;
         }
         case 3: {
-            view = [JJHeaders getView3:headerWH images:images imageWH:imageWH];
+            imageView = [JJHeaders getView3:headerWH images:images imageWH:imageWH];
             break;
         }
         case 4: {
-            view = [JJHeaders getView4:headerWH images:images imageWH:imageWH];
+            imageView = [JJHeaders getView4:headerWH images:images imageWH:imageWH];
             break;
         }
         case 5: {
-            view = [JJHeaders getView5:headerWH images:images imageWH:imageWH];
+            imageView = [JJHeaders getView5:headerWH images:images imageWH:imageWH];
             break;
         }
         default:
             break;
     }
-    return view;
+    return imageView;
 }
 
-+ (UIView *)getView1:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH
++ (UIImageView *)getView1:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH
 {
     CGFloat diameter = headerWH;
     CGFloat r = diameter / 2;
     CGFloat scale = diameter / imageWH;
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, headerWH, headerWH)];
-    view.backgroundColor = [UIColor redColor];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, headerWH, headerWH)];
+    imageView.backgroundColor = [UIColor redColor];
     
     UIImage *image = images[0];
     CGSize imageSize = image.size;
     CGFloat correctScale = headerWH / imageSize.height;
     JJCustomLayer *layer0 = [JJCustomLayer createWithImage:image scale:scale * correctScale degrees:0 isClip:NO];
     layer0.frame = [JJHeaders getRect:CGPointMake(r, r) size:CGSizeMake(diameter, diameter)];
-    [view.layer addSublayer:layer0];
+    [imageView.layer addSublayer:layer0];
     [layer0 setNeedsDisplay];
     
-    return view;
+    return imageView;
 }
 
-+ (UIView *)getView2:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH
++ (UIImageView *)getView2:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH
 {
     CGFloat diameter = (headerWH + headerWH - sqrtf(2) * headerWH);
     CGFloat r = diameter / 2;
     CGFloat scale = diameter / imageWH;
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, headerWH, headerWH)];
-    view.backgroundColor = [UIColor clearColor];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, headerWH, headerWH)];
+    imageView.backgroundColor = [UIColor clearColor];
     
     UIImage *image = images[0];
     CGSize imageSize = image.size;
     CGFloat correctScale = headerWH / imageSize.height;
     JJCustomLayer *layer0 = [JJCustomLayer createWithImage:image scale:scale * correctScale degrees:0 isClip:NO];
     layer0.frame = [JJHeaders getRect:CGPointMake(r, r) size:CGSizeMake(diameter, diameter)];
-    [view.layer addSublayer:layer0];
+    [imageView.layer addSublayer:layer0];
     [layer0 setNeedsDisplay];
     
     image = images[1];
@@ -89,19 +89,19 @@ static inline float radians(double degrees) { return degrees * M_PI / 180; }
     correctScale = headerWH / imageSize.height;
     JJCustomLayer *layer1 = [JJCustomLayer createWithImage:image scale:scale * correctScale degrees:180 - 45 isClip:YES];
     layer1.frame = [JJHeaders getRect:CGPointMake(r + sqrtf(2) * diameter / 2, r + sqrtf(2) * diameter / 2) size:CGSizeMake(diameter, diameter)];
-    [view.layer addSublayer:layer1];
+    [imageView.layer addSublayer:layer1];
     [layer1 setNeedsDisplay];
     
-    return view;
+    return imageView;
 }
 
-+ (UIView *)getView3:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH
++ (UIImageView *)getView3:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH
 {
     CGFloat diameter = headerWH/2;
     CGFloat scale = diameter / imageWH;
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, headerWH, headerWH)];
-    view.backgroundColor = [UIColor clearColor];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, headerWH, headerWH)];
+    imageView.backgroundColor = [UIColor clearColor];
     
     CALayer *layer = [CALayer layer];
     layer.frame = CGRectMake(0, 0, 2 * diameter, diameter + sqrtf(3) / 2 * diameter);
@@ -134,20 +134,20 @@ static inline float radians(double degrees) { return degrees * M_PI / 180; }
     [layer2 setNeedsDisplay];
     
     CGRect f = layer.frame;
-    f.origin.y = (view.frame.size.height - f.size.height) / 2;
+    f.origin.y = (imageView.frame.size.height - f.size.height) / 2;
     layer.frame = f;
-    [view.layer addSublayer:layer];
-    return view;
+    [imageView.layer addSublayer:layer];
+    return imageView;
 }
 
-+ (UIView *)getView4:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH
++ (UIImageView *)getView4:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH
 {
     CGFloat diameter = headerWH/2;
     CGFloat r = diameter / 2;
     CGFloat scale = diameter / imageWH;
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, headerWH, headerWH)];
-    view.backgroundColor = [UIColor clearColor];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, headerWH, headerWH)];
+    imageView.backgroundColor = [UIColor clearColor];
     
     UIImage *image = images[0];
     CGSize imageSize = image.size;
@@ -155,7 +155,7 @@ static inline float radians(double degrees) { return degrees * M_PI / 180; }
     CGPoint center0 = CGPointMake(r, r);
     JJCustomLayer *layer0 = [JJCustomLayer createWithImage:image scale:scale * correctScale degrees:0 isClip:YES];
     layer0.frame = [JJHeaders getRect:center0 size:CGSizeMake(diameter, diameter)];
-    [view.layer addSublayer:layer0];
+    [imageView.layer addSublayer:layer0];
     [layer0 setNeedsDisplay];
     
     image = images[1];
@@ -164,7 +164,7 @@ static inline float radians(double degrees) { return degrees * M_PI / 180; }
     CGPoint center1 = CGPointMake(center0.x, center0.y + diameter);
     JJCustomLayer *layer1 = [JJCustomLayer createWithImage:image scale:scale * correctScale degrees:270 isClip:YES];
     layer1.frame = [JJHeaders getRect:center1 size:CGSizeMake(diameter, diameter)];
-    [view.layer addSublayer:layer1];
+    [imageView.layer addSublayer:layer1];
     [layer1 setNeedsDisplay];
     
     image = images[2];
@@ -173,7 +173,7 @@ static inline float radians(double degrees) { return degrees * M_PI / 180; }
     CGPoint center2 = CGPointMake(center1.x + diameter, center1.y);
     JJCustomLayer *layer2 = [JJCustomLayer createWithImage:image scale:scale * correctScale degrees:180 isClip:YES];
     layer2.frame = [JJHeaders getRect:center2 size:CGSizeMake(diameter, diameter)];
-    [view.layer addSublayer:layer2];
+    [imageView.layer addSublayer:layer2];
     [layer2 setNeedsDisplay];
     
     image = images[3];
@@ -182,12 +182,12 @@ static inline float radians(double degrees) { return degrees * M_PI / 180; }
     CGPoint center3 = CGPointMake(center2.x, center2.y - diameter);
     JJCustomLayer *layer3 = [JJCustomLayer createWithImage:image scale:scale * correctScale degrees:90 isClip:YES];
     layer3.frame = [JJHeaders getRect:center3 size:CGSizeMake(diameter, diameter)];
-    [view.layer addSublayer:layer3];
+    [imageView.layer addSublayer:layer3];
     [layer3 setNeedsDisplay];
-    return view;
+    return imageView;
 }
 
-+ (UIView *)getView5:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH
++ (UIImageView *)getView5:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH
 {
     CGFloat r = headerWH / 2 / (2 * sin(radians(54)) + 1);
     CGFloat diameter = r * 2;
@@ -196,8 +196,8 @@ static inline float radians(double degrees) { return degrees * M_PI / 180; }
     CALayer *layer = [CALayer layer];
     layer.frame = CGRectMake(0, 0,headerWH, r / tan(radians(36)) + r / sin(radians(36)) + diameter);
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, headerWH, headerWH)];
-    view.backgroundColor = [UIColor clearColor];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, headerWH, headerWH)];
+    imageView.backgroundColor = [UIColor clearColor];
     
     UIImage *image = images[0];
     CGSize imageSize = image.size;
@@ -245,11 +245,11 @@ static inline float radians(double degrees) { return degrees * M_PI / 180; }
     [layer4 setNeedsDisplay];
     
     CGRect f = layer.frame;
-    f.origin.y = (view.frame.size.height - f.size.height) / 2;
+    f.origin.y = (imageView.frame.size.height - f.size.height) / 2;
     layer.frame = f;
-    [view.layer addSublayer:layer];
+    [imageView.layer addSublayer:layer];
     
-    return view;
+    return imageView;
 }
 
 + (CGRect)getRect:(CGPoint)center size:(CGSize)size

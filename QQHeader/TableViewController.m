@@ -7,49 +7,103 @@
 //
 
 #import "TableViewController.h"
+#import "TableViewCell.h"
+#import "DownLoadModle.h"
 
 @interface TableViewController ()
-
+@property (nonatomic,strong) NSMutableArray * models;
 @end
 
 @implementation TableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.models = [[NSMutableArray alloc]init];
+    [self creatData];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView registerNib:[UINib nibWithNibName:@"TableViewCell" bundle:nil] forCellReuseIdentifier:@"myCell"];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+
+    return self.models.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+
+    return 1;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell" forIndexPath:indexPath];
+    if (!cell) {
+        [tableView registerNib:[UINib nibWithNibName:@"myCell" bundle:nil] forCellReuseIdentifier:@"myCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
+    }
+    cell.downLoadmodle= self.models[indexPath.section];
     
     return cell;
 }
-*/
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 80;
+}
+
+
+//创建假数据
+-(void)creatData{
+    DownLoadModle * dl =[[DownLoadModle alloc]init];
+    [dl.userIDs addObjectsFromArray:@[@"5.jpg"]];
+    [self.models addObject:dl];
+    
+    DownLoadModle * dl1 =[[DownLoadModle alloc]init];
+    [dl1.userIDs addObjectsFromArray:@[@"1.jpg",@"5.jpg"]];
+    [self.models addObject:dl1];
+    
+    
+    DownLoadModle * dl2 =[[DownLoadModle alloc]init];
+    [dl2.userIDs addObjectsFromArray:@[@"5.jpg",@"3.jpg",@"4.jpg"]];
+    [self.models addObject:dl2];
+    
+    DownLoadModle * dl3 =[[DownLoadModle alloc]init];
+    [dl3.userIDs addObjectsFromArray:@[@"5.jpg",@"2.jpg",@"3.jpg",@"4.jpg"]];
+    [self.models addObject:dl3];
+    
+    DownLoadModle * dl4 =[[DownLoadModle alloc]init];
+    [dl4.userIDs addObjectsFromArray:@[@"5.jpg",@"1.jpg",@"2.jpg",@"3.jpg",@"4.jpg"]];
+    [self.models addObject:dl4];
+    
+    DownLoadModle * dl5 =[[DownLoadModle alloc]init];
+    [dl5.userIDs addObjectsFromArray:@[@"5.jpg",@"1.jpg",@"2.jpg",@"3.jpg",@"4.jpg"]];
+    [self.models addObject:dl5];
+    
+    DownLoadModle * dl6 =[[DownLoadModle alloc]init];
+    [dl6.userIDs addObjectsFromArray:@[@"5.jpg",@"1.jpg",@"2.jpg",@"3.jpg",@"4.jpg"]];
+    [self.models addObject:dl6];
+    
+    DownLoadModle * dl7 =[[DownLoadModle alloc]init];
+    [dl7.userIDs addObjectsFromArray:@[@"5.jpg",@"1.jpg",@"2.jpg",@"3.jpg",@"4.jpg"]];
+    [self.models addObject:dl7];
+    
+    DownLoadModle * dl8 =[[DownLoadModle alloc]init];
+    [dl8.userIDs addObjectsFromArray:@[@"5.jpg",@"1.jpg",@"2.jpg",@"3.jpg",@"4.jpg"]];
+    [self.models addObject:dl8];
+    
+    DownLoadModle * dl9 =[[DownLoadModle alloc]init];
+    [dl9.userIDs addObjectsFromArray:@[@"5.jpg",@"1.jpg",@"2.jpg",@"3.jpg",@"4.jpg"]];
+    [self.models addObject:dl9];
+    [self.tableView reloadData];
+}
 
 /*
 // Override to support conditional editing of the table view.

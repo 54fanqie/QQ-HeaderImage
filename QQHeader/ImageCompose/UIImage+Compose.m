@@ -1,12 +1,12 @@
 //
-//  UIImage+Extension.m
-//  ECHeaders
+//  UIImage+Compose.m
+//  ImageCompose
 //
-//  Created by hjp on 16/3/9.
-//  Copyright © 2016年 Eric. All rights reserved.
+//  Created by GG on 16/3/9.
+//  Copyright © 2016年 GG. All rights reserved.
 //
 
-#import "UIImage+Extension.h"
+#import "UIImage+Compose.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define kClipHalfAngle 30  //裁剪弧度的一半的度数

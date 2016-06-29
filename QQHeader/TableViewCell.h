@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DownLoadModle.h"
 
 @interface TableViewCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *textLab;
+@property (weak, nonatomic) IBOutlet UIImageView * cellHeaderImage;
+@property (nonatomic,strong) DownLoadModle * downLoadmodle;
 
 @end

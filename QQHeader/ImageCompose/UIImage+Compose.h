@@ -1,13 +1,13 @@
 //
-//  UIImage+Extension.h
-//  ECHeaders
+//  UIImage+Compose.h
+//  ImageCompose
 //
-//  Created by hjp on 16/3/9.
-//  Copyright © 2016年 Eric. All rights reserved.
+//  Created by GG on 16/3/9.
+//  Copyright © 2016年 GG. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (Extension)
+@interface UIImage (Compose)
 + (UIImage *)composeHeaderImageWithConstrainWH:(CGFloat)headerWH imagePathArray:(NSArray *)imagePathArray backgroundColor:(UIColor *)backgroundColor;
 @end

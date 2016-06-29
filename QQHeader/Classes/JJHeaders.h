@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @interface JJHeaders : NSObject
 
-+ (UIView *)createHeaderView:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH;
++ (UIImageView *)createHeaderView:(CGFloat)headerWH images:(NSArray *)images imageWH:(CGFloat)imageWH;
 
 @end

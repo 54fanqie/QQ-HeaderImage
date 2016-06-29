@@ -20,5 +20,20 @@
 
     // Configure the view for the selected state
 }
+-(void)setDownLoadmodle:(DownLoadModle *)downLoadmodle{
+    _downLoadmodle =downLoadmodle;
+    
+    __weak TableViewCell * weakself = self;
+    self.textLab.text =[NSString stringWithFormat:@"%ld",[_downLoadmodle.userIDs count]];
+    
+    if (_downLoadmodle.headImage) {
+        self.cellHeaderImage.image = _downLoadmodle.headImage;
+    }else{
+        self.cellHeaderImage.image = nil;
+        [_downLoadmodle downLoadImagesfrom:^(UIImage * image) {
+            weakself.cellHeaderImage.image = image;
+        }];
+    }
 
+}
 @end
