@@ -95,6 +95,10 @@
     [dl7.userIDs addObjectsFromArray:@[@"5.jpg",@"1.jpg",@"2.jpg",@"3.jpg",@"4.jpg"]];
     [self.models addObject:dl7];
     
+    DownLoadModle * dl10 =[[DownLoadModle alloc]init];
+    [dl10.userIDs addObjectsFromArray:@[@"1.jpg",@"2.jpg"]];
+    [self.models addObject:dl10];
+    
     DownLoadModle * dl8 =[[DownLoadModle alloc]init];
     [dl8.userIDs addObjectsFromArray:@[@"5.jpg",@"1.jpg",@"2.jpg",@"3.jpg",@"4.jpg"]];
     [self.models addObject:dl8];
