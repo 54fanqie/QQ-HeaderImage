@@ -21,7 +21,7 @@
     self.models = [[NSMutableArray alloc]init];
     [self creatData];
     
-//  ====================
+
     [self.tableView registerNib:[UINib nibWithNibName:@"TableViewCell" bundle:nil] forCellReuseIdentifier:@"myCell"];
 }
 
